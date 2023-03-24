@@ -1,0 +1,46 @@
+{
+  "name": "notion-issue-sync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "action.yml"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "lint": "eslint 'src/**/*.{js,ts}?(x)' --fix",
+    "build": "ncc build src/index.ts --minify --v8-cache",
+    "prebuild": "run-s lint clean",
+    "prepare": "is-ci || husky install .husky"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "pretty-quick — staged"
+    ],
+    "*.ts": [
+      "eslint --fix"
+    ]
+  },
+  "author": {
+    "name": "guwensoo",
+    "email": "guwensoo@icloud.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "@notionhq/client": "^2.2.3",
+    "@wow-actions/parse-inputs": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.6",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
+    "husky": "^8.0.3",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^4.4.1",
+    "typescript": "^5.0.2"
+  }
+}

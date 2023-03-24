@@ -1,0 +1,21 @@
+name: Notion db - Github issue sync
+description: Sync github issue with notion database.
+author: guwensoo <guwensoo@gmail.com>
+inputs:
+  GITHUB_TOKEN:
+    description: Your GitHub token for authentication.
+    required: true
+  notionSecret:
+    description: Notion workflow api key.
+    required: true
+  databaseId:
+    description: Notion database id.
+    required: true
+
+runs:
+  using: node16
+  main: dist/index.js
+
+branding:
+  icon: flag
+  color: orange

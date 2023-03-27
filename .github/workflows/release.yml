@@ -1,0 +1,22 @@
+name: Release
+on:
+    push:
+        branches:
+            - master
+        
+jobs:
+    run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: Install
+              run: npm ci
+            - name: Build
+              run: npm run build
+            - name: Release
+              uses: wow-actions/release-github-action@v2
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                GIT_AUTHOR_NAME: guwensoo
+                GIT_AUTHOR_EMAIL: guwensoo@gmail.com
